@@ -1,43 +1,61 @@
+import { useState } from "react"
+
 export default function App() {
+  const [screen, setScreen] = useState([])
+
   return (
     <div className="calculator">
-      <Display />
+      <Display screen={screen} setScreen={setScreen} />
       <Buttons />
     </div>
   )
 }
 
-function Display() {
+function Display({ screen, setScreen }) {
   return (
     <div className="display">
-      <input type="text" />
+      <input
+        type="text"
+        value={screen}
+        onChange={(e) => setScreen(Number(e.target.value))}
+      />
     </div>
   )
 }
 
-function Buttons() {
+function Buttons({ screen, setScreen, children }) {
   return (
     <div className="buttons">
-      <button className="button">C</button>
-      <button className="button">()</button>
-      <button className="button">/</button>
-      <button className="button">8</button>
-      <button className="button">X</button>
-      <button className="button">9</button>
-      <button className="button">4</button>
-      <button className="button">%</button>
-      <button className="button">5</button>
-      <button className="button">7</button>
-      <button className="button">6</button>
-      <button className="button">-</button>
-      <button className="button">1</button>
-      <button className="button">2</button>
-      <button className="button">3</button>
-      <button className="button">+</button>
-      <button className="button">+/-</button>
-      <button className="button">0</button>
-      <button className="button">,</button>
-      <button className="button">=</button>
+      <Button>C</Button>
+      <Button>()</Button>
+      <Button>%</Button>
+      <Button>/</Button>
+      <Button>7</Button>
+      <Button>8</Button>
+      <Button>9</Button>
+      <Button>X</Button>
+      <Button>4</Button>
+      <Button>5</Button>
+      <Button>6</Button>
+      <Button>-</Button>
+      <Button>1</Button>
+      <Button>2</Button>
+      <Button>3</Button>
+      <Button>+</Button>
+      <Button>+/-</Button>
+      <Button>0</Button>
+      <Button>,</Button>
+      <Button>=</Button>
+    </div>
+  )
+}
+
+function Button({ screen, setScreen, children }) {
+  return (
+    <div className="button">
+      <button className="button" value={children}>
+        {children}
+      </button>
     </div>
   )
 }
