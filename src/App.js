@@ -1,3 +1,16 @@
 export default function App() {
-  return <h1>Hello from React</h1>
+  return (
+    <div className="caluculator">
+      <Display />
+      <Buttons />
+    </div>
+  )
+}
+
+function Display() {
+  return <div className="display"></div>
+}
+
+function Buttons() {
+  return <div className="buttons"></div>
 }
