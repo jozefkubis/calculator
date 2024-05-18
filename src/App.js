@@ -1,12 +1,17 @@
 import { useState } from "react"
 
+//MARK: APP
 export default function App() {
   const [screen, setScreen] = useState([])
 
+  //MARK: HANDLERS
+
+  //MARK: handleClick function
   function handleClick(children) {
     setScreen([...screen, children])
   }
 
+  //MARK: clear function
   function clear() {
     setScreen([])
   }
@@ -19,6 +24,9 @@ export default function App() {
   )
 }
 
+//MARK: COMPONENTS
+
+//MARK: DISPLAY
 function Display({ screen, setScreen }) {
   return (
     <div className="display">
@@ -31,6 +39,7 @@ function Display({ screen, setScreen }) {
   )
 }
 
+//MARK: BUTTONS
 function Buttons({ onHandleClick, clear, screen }) {
   return (
     <div className="buttons">
@@ -58,6 +67,7 @@ function Buttons({ onHandleClick, clear, screen }) {
   )
 }
 
+//MARK: BUTTON
 function Button({ children, onHandleClick, clear }) {
   return (
     <div className="button">
@@ -72,6 +82,7 @@ function Button({ children, onHandleClick, clear }) {
   )
 }
 
+//MARK: EQUALS
 function Equals({ children, screen }) {
   return (
     <div className="button">
