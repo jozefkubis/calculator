@@ -127,7 +127,7 @@ function ClearButton({ children, clear }) {
 }
 
 //MARK: EQUALS
-function Equals({ children, onCalculate, screen }) {
+function Equals({ children, onCalculate }) {
   return (
     <div className="button">
       <button className="button" value={children} onClick={() => onCalculate()}>
