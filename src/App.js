@@ -58,6 +58,7 @@ function Display({ screen, setScreen }) {
     <div className="display">
       <input
         type="text"
+        placeholder="0"
         value={screen.length > 1 ? screen.join("") : screen}
         onChange={(e) => setScreen(e.target.value)}
       />
