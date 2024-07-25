@@ -1,6 +1,12 @@
-//MARK: CLEARBUTTON
+import { useCalculator } from "../contexts/CalculatorContext"
 
-export function ClearButton({ children, clear }) {
+export function ClearButton({ children }) {
+  const { dispatch } = useCalculator()
+
+  function clear() {
+    dispatch({ type: "clear" })
+  }
+
   return (
     <div className="button">
       <button

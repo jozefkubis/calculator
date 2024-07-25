@@ -2,33 +2,29 @@ import { Equals } from "./Equals"
 import { ClearButton } from "./ClearButton"
 import { Button } from "./Button"
 
-//MARK: COMPONENTS
-//MARK: BUTTONS
-export function Buttons({ onHandleClick, screen, clear, onCalculate }) {
+export function Buttons() {
   return (
     <div className="buttons">
-      <ClearButton clear={clear}>C</ClearButton>
-      <Button onHandleClick={onHandleClick}>(</Button>
-      <Button onHandleClick={onHandleClick}>)</Button>
-      <Button onHandleClick={onHandleClick}>/</Button>
-      <Button onHandleClick={onHandleClick}>7</Button>
-      <Button onHandleClick={onHandleClick}>8</Button>
-      <Button onHandleClick={onHandleClick}>9</Button>
-      <Button onHandleClick={onHandleClick}>x</Button>
-      <Button onHandleClick={onHandleClick}>4</Button>
-      <Button onHandleClick={onHandleClick}>5</Button>
-      <Button onHandleClick={onHandleClick}>6</Button>
-      <Button onHandleClick={onHandleClick}>-</Button>
-      <Button onHandleClick={onHandleClick}>1</Button>
-      <Button onHandleClick={onHandleClick}>2</Button>
-      <Button onHandleClick={onHandleClick}>3</Button>
-      <Button onHandleClick={onHandleClick}>+</Button>
-      <Button onHandleClick={onHandleClick}>%</Button>
-      <Button onHandleClick={onHandleClick}>0</Button>
-      <Button onHandleClick={onHandleClick}>.</Button>
-      <Equals onCalculate={onCalculate} screen={screen}>
-        =
-      </Equals>
+      <ClearButton>C</ClearButton>
+      <Button>(</Button>
+      <Button>)</Button>
+      <Button>/</Button>
+      <Button>7</Button>
+      <Button>8</Button>
+      <Button>9</Button>
+      <Button>x</Button>
+      <Button>4</Button>
+      <Button>5</Button>
+      <Button>6</Button>
+      <Button>-</Button>
+      <Button>1</Button>
+      <Button>2</Button>
+      <Button>3</Button>
+      <Button>+</Button>
+      <Button>%</Button>
+      <Button>0</Button>
+      <Button>.</Button>
+      <Equals>=</Equals>
     </div>
   )
 }
