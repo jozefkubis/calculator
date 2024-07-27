@@ -1,23 +1,19 @@
+// import { useEffect } from "react"
 import { useCalculator } from "../contexts/CalculatorContext"
 
 export function Button({ children }) {
-  const { dispatch, screen, functionsArr } = useCalculator()
+  const { dispatch, screen, operatorArr } = useCalculator()
+
+  let functionsArray = ["+", "-", "x", "/", "%", "."]
+
+  const isOperator = functionsArray.includes(children)
 
   function handleClick(children) {
-    const functionsArray = ["+", "-", "x", "/", "%", "."]
-
-    const isOperator = functionsArray.includes(children)
-
     if (isOperator) {
       dispatch({
-        type: "setFunctionsArr",
-        payload: [...functionsArr, children],
+        type: "setOperatorArr",
+        payload: [...operatorArr, children],
       })
-    }
-
-    if (functionsArr.length > 0) {
-      // const x = functionsArr
-      console.log(children)
     }
 
     dispatch({ type: "setScreen", payload: [...screen, children] })

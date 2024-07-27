@@ -1,7 +1,9 @@
 import { useCalculator } from "../contexts/CalculatorContext"
 
 export function Display() {
-  const { screen, dispatch } = useCalculator()
+  const { screen, dispatch, operatorArr } = useCalculator()
+
+  console.log(operatorArr)
 
   return (
     <div className="display">

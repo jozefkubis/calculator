@@ -3,8 +3,8 @@ import { createContext, useContext, useReducer } from "react"
 const CalculatorContext = createContext()
 
 const initialState = {
-  functionsArr: [],
   screen: [],
+  operatorArr: [],
 }
 
 //MARK: REDUCER
@@ -13,8 +13,8 @@ function reducer(state, action) {
     case "setScreen":
       return { ...state, screen: action.payload }
 
-    case "setFunctionsArr":
-      return { ...state, functionsArr: action.payload }
+    case "setOperatorArr":
+      return { ...state, operatorArr: action.payload }
 
     case "clear":
       return initialState
@@ -25,13 +25,13 @@ function reducer(state, action) {
 }
 
 function CalculatorProvider({ children }) {
-  const [{ screen, functionsArr }, dispatch] = useReducer(reducer, initialState)
+  const [{ screen, operatorArr }, dispatch] = useReducer(reducer, initialState)
 
   return (
     <CalculatorContext.Provider
       value={{
         screen,
-        functionsArr,
+        operatorArr,
         dispatch,
       }}
     >
