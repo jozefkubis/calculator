@@ -1,6 +1,5 @@
 import { useCalculator } from "../contexts/CalculatorContext"
 
-//MARK: DISPLAY
 export function Display() {
   const { screen, dispatch } = useCalculator()
 

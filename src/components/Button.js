@@ -1,9 +1,25 @@
 import { useCalculator } from "../contexts/CalculatorContext"
 
 export function Button({ children }) {
-  const { dispatch, screen } = useCalculator()
+  const { dispatch, screen, functionsArr } = useCalculator()
 
   function handleClick(children) {
+    const functionsArray = ["+", "-", "x", "/", "%", "."]
+
+    const isOperator = functionsArray.includes(children)
+
+    if (isOperator) {
+      dispatch({
+        type: "setFunctionsArr",
+        payload: [...functionsArr, children],
+      })
+    }
+
+    if (functionsArr.length > 0) {
+      // const x = functionsArr
+      console.log(children)
+    }
+
     dispatch({ type: "setScreen", payload: [...screen, children] })
   }
 

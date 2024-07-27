@@ -3,6 +3,7 @@ import { createContext, useContext, useReducer } from "react"
 const CalculatorContext = createContext()
 
 const initialState = {
+  functionsArr: [],
   screen: [],
 }
 
@@ -11,6 +12,9 @@ function reducer(state, action) {
   switch (action.type) {
     case "setScreen":
       return { ...state, screen: action.payload }
+
+    case "setFunctionsArr":
+      return { ...state, functionsArr: action.payload }
 
     case "clear":
       return initialState
@@ -21,12 +25,13 @@ function reducer(state, action) {
 }
 
 function CalculatorProvider({ children }) {
-  const [{ screen }, dispatch] = useReducer(reducer, initialState)
+  const [{ screen, functionsArr }, dispatch] = useReducer(reducer, initialState)
 
   return (
     <CalculatorContext.Provider
       value={{
         screen,
+        functionsArr,
         dispatch,
       }}
     >
