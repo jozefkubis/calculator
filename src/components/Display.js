@@ -5,12 +5,20 @@ export function Display() {
 
   console.log(operatorArr)
 
+  function offOperator() {
+    if (screen.length > 0 || operatorArr.length < 1) {
+      return screen.join("")
+    } else {
+      return screen
+    }
+  }
+
   return (
     <div className="display">
       <input
         type="text"
         placeholder="0"
-        value={screen.length > 1 ? screen.join("") : screen}
+        value={offOperator()}
         onChange={(e) =>
           dispatch({ type: "setScreen", payload: e.target.value })
         }
