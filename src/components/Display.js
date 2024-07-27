@@ -1,24 +1,14 @@
 import { useCalculator } from "../contexts/CalculatorContext"
 
 export function Display() {
-  const { screen, dispatch, operatorArr } = useCalculator()
-
-  console.log(operatorArr)
-
-  function offOperator() {
-    if (screen.length > 0 || operatorArr.length < 1) {
-      return screen.join("")
-    } else {
-      return screen
-    }
-  }
+  const { screen, dispatch } = useCalculator()
 
   return (
     <div className="display">
       <input
         type="text"
         placeholder="0"
-        value={offOperator()}
+        value={screen.length > 1 ? screen.join("") : screen}
         onChange={(e) =>
           dispatch({ type: "setScreen", payload: e.target.value })
         }

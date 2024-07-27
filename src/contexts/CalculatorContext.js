@@ -13,9 +13,6 @@ function reducer(state, action) {
     case "setScreen":
       return { ...state, screen: action.payload }
 
-    case "setOperatorArr":
-      return { ...state, operatorArr: action.payload }
-
     case "clear":
       return initialState
 
@@ -25,13 +22,12 @@ function reducer(state, action) {
 }
 
 function CalculatorProvider({ children }) {
-  const [{ screen, operatorArr }, dispatch] = useReducer(reducer, initialState)
+  const [{ screen }, dispatch] = useReducer(reducer, initialState)
 
   return (
     <CalculatorContext.Provider
       value={{
         screen,
-        operatorArr,
         dispatch,
       }}
     >
