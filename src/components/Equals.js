@@ -5,8 +5,7 @@ export function Equals({ children }) {
   const { dispatch, screen } = useCalculator()
 
   function calculate() {
-    // Predpokladajme, že 'screen' obsahuje čísla a operátory ako reťazec
-    // Napríklad: screen = ["12", "+", "7", "x", "3"]
+    // Predpokladajme, že 'screen' obsahuje čísla a operátory ako reťazec -> screen = ["12", "+", "7", "x", "3"]
     if (screen.length > 0) {
       let result
       try {

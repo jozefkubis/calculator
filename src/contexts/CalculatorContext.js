@@ -4,7 +4,6 @@ const CalculatorContext = createContext()
 
 const initialState = {
   screen: [],
-  operatorArr: [],
 }
 
 //MARK: REDUCER
