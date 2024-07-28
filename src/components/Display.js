@@ -3,7 +3,7 @@ import { useCalculator } from "../contexts/CalculatorContext"
 export function Display() {
   const { screen, dispatch } = useCalculator()
 
-  const newScreen = screen.length > 1 ? screen.join("") : screen.join("")
+  const newScreen = screen.length > 1 ? screen.join("") : screen
 
   function handleChange(e) {
     dispatch({ type: "setScreen", payload: e.target.value })
