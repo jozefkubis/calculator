@@ -5,25 +5,25 @@ export function Equals({ children }) {
   const { dispatch, screen } = useCalculator()
 
   function calculate() {
-    // Predpokladajme, že 'screen' obsahuje čísla a operátory ako reťazec -> screen = ["12", "+", "7", "x", "3"]
+    const newScreen = Array.isArray(screen) ? screen : [screen]
+
     if (screen.length > 0) {
-      let result
       try {
         // Spojíme prvky obrazovky do jedného reťazca a vyhodnotíme výraz pomocou knižnice mathjs
-        result = evaluate(screen.join("").replace("x", "*"))
-      } catch (error) {
-        console.error("Chyba pri výpočte:", error)
-        result = "Chyba"
-      }
+        const onScreen = newScreen.join("").replace("x", "*")
+        const result = evaluate(onScreen)
 
-      // Nastavíme výsledok ako nový stav obrazovky
-      dispatch({ type: "setScreen", payload: [result.toString()] })
+        // Nastavíme výsledok ako nový stav obrazovky
+        dispatch({ type: "setScreen", payload: [result.toString()] })
+      } catch {
+        dispatch({ type: "setScreen", payload: newScreen })
+      }
     }
   }
 
   return (
     <div className="button">
-      <button className="button" value={children} onClick={() => calculate()}>
+      <button className="button" value={children} onClick={calculate}>
         {children}
       </button>
     </div>

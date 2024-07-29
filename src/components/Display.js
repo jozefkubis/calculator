@@ -9,7 +9,7 @@ export function Display() {
     dispatch({ type: "setScreen", payload: e.target.value })
   }
 
-  console.log(Number(newScreen))
+  console.log(newScreen)
 
   return (
     <div className="display">
