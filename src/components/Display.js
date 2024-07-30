@@ -15,10 +15,6 @@ export function Display() {
     if (e.key === "Escape" || e.key === "Delete") dispatch({ type: "clear" })
   }
 
-  console.log(screen)
-  console.log(onScreen)
-  console.log(newScreen)
-
   return (
     <div className="display">
       <input
