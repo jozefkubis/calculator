@@ -1,18 +1,22 @@
 import { useCalculator } from "../contexts/CalculatorContext"
 
+const OPERATORS = ["+", "-", "x", "/", "%", "."]
+// const ZERO = "0."
+
 export function Button({ children }) {
   const { dispatch, screen } = useCalculator()
 
   const lastChar = screen[screen.length - 1]
-  const isOperator = ["+", "-", "x", "/", "%", "."].includes(children)
-  const isLastCharOperator = ["+", "-", "x", "/", "%", "."].includes(lastChar)
+  const isOperator = (char) => OPERATORS.includes(char)
+  const isEndOperator = isOperator(lastChar)
 
-  const startOperator = ["+", "x", "/", "%", "."].includes(children)
+  const startOperator = isOperator(children)
   const startWithOperator = screen.length === 0 && startOperator
 
   function handleClick() {
-    if (startWithOperator) return
-    if (isOperator && isLastCharOperator) return
+    if (children !== "-" && children !== "." && startWithOperator) return
+    if (isEndOperator && isOperator(children)) return
+    // if (children === "." && !screen.includes(".")) children = ZERO
 
     dispatch({ type: "setScreen", payload: [...screen, children] })
   }

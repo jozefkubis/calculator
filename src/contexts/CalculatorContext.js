@@ -30,8 +30,15 @@ function CalculatorProvider({ children }) {
     if (screen.length > 0) {
       try {
         // Spojíme prvky obrazovky do jedného reťazca a vyhodnotíme výraz pomocou knižnice mathjs
-        const onScreen = newScreen.join("").replace("x", "*")
-        const result = evaluate(onScreen)
+        const onScreen = newScreen.join("").replace(/x/g, "*")
+        let result = evaluate(onScreen)
+
+        if (
+          result.toString().includes(".") &&
+          result.toString().split(".")[1].length > 2
+        ) {
+          result = result.toFixed(2)
+        }
 
         // Nastavíme výsledok ako nový stav obrazovky
         dispatch({ type: "setScreen", payload: [result.toString()] })
