@@ -1,14 +1,22 @@
 import { useCalculator } from "../contexts/CalculatorContext"
 
 export function Display() {
-  const { screen, dispatch } = useCalculator()
+  const { screen, dispatch, calculate } = useCalculator()
 
-  const newScreen = screen.length > 1 ? screen.join("") : screen
+  const onScreen = Array.isArray(screen) ? screen : [screen]
+  const newScreen = onScreen.length > 0 ? onScreen.join("") : onScreen
 
   function handleChange(e) {
     dispatch({ type: "setScreen", payload: e.target.value })
   }
 
+  function handleKeyDown(e) {
+    if (e.key === "Enter") calculate()
+    if (e.key === "Escape" || e.key === "Delete") dispatch({ type: "clear" })
+  }
+
+  console.log(screen)
+  console.log(onScreen)
   console.log(newScreen)
 
   return (
@@ -18,6 +26,7 @@ export function Display() {
         placeholder="0"
         value={newScreen}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
       />
     </div>
   )
