@@ -39,7 +39,11 @@ export function Button({ children }) {
 
   return (
     <div>
-      <button className="button" value={children} onClick={handleClick}>
+      <button
+        className={`button ${isOperator(children) ? "operator" : ""}`}
+        value={children}
+        onClick={handleClick}
+      >
         {children}
       </button>
     </div>

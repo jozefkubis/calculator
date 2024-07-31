@@ -59,14 +59,14 @@ body {
 }
 
 .button:hover {
-  background-color: #ff9500;
+  background-color: #968989;
 }
 
 .button:active {
   background-color: #c0c0c0;
 }
 
-.buttons.operator {
+.button.operator {
   background-color: #ff9500;
   color: #fff;
 }

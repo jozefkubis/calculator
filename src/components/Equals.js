@@ -8,8 +8,8 @@ export function Equals({ children }) {
   }
 
   return (
-    <div className="button">
-      <button className="button" value={children} onClick={handleClick}>
+    <div>
+      <button className="button equal" value={children} onClick={handleClick}>
         {children}
       </button>
     </div>
