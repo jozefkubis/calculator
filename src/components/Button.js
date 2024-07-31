@@ -14,19 +14,36 @@ export function Button({ children }) {
   const startWithOperator = screen.length === 0 && startOperator
 
   function handleClick() {
+    // Ak je prvý znak operátor a obrazovka je prázdna, vráti sa
     if (children !== "-" && children !== "." && startWithOperator) return
-    if (isEndOperator && isOperator(children)) return
-    if (children === "." && !screen.includes(".")) children = ZERO
-    if (screen.length > 0 && children === ZERO) return
-    // if (screen[0] === ZERO) return
-    // console.log(screen[0])
 
-    dispatch({ type: "setScreen", payload: [...screen, children] })
+    // Ak je posledný znak operátor a nový znak je tiež operátor, vráti sa
+    if (isEndOperator && isOperator(children)) return
+
+    // Ak je nový znak desatinná bodka a obrazovka je prázdna, nastaví sa na "0."
+    if (children === "." && screen.length === 0) {
+      dispatch({ type: "setScreen", payload: ZERO })
+      return
+    }
+
+    // Kontrola viacnásobných desatinných bodiek
+    const newScreen = [...screen, children].join("")
+    const containsMultipleDecimals = newScreen
+      .split(/[+\-\x/%]/)
+      .some((part) => part.split(".").length > 2)
+
+    if (containsMultipleDecimals) return
+
+    dispatch({ type: "setScreen", payload: newScreen })
   }
 
   return (
-    <div className="button">
-      <button className="button" value={children} onClick={handleClick}>
+    <div>
+      <button
+        className={(children = "x" ? "operator" : "button")}
+        value={children}
+        onClick={handleClick}
+      >
         {children}
       </button>
     </div>

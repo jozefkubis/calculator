@@ -1,6 +1,6 @@
 import { useCalculator } from "../contexts/CalculatorContext"
 
-const OPERATORS = ["+", "-", "x", "/", "%", "."]
+const OPERATORS = ["+", "-", "x", "/", "%", ".", "="]
 
 export function Display() {
   const { screen, dispatch, calculate } = useCalculator()
@@ -17,16 +17,23 @@ export function Display() {
     const newLastChar = value[value.length - 1]
     const firstOperator = value[0]
 
+    const containsMultipleDecimals = value
+      .split(/[+\-\x/%]/)
+      .some((part) => part.split(".").length > 2)
+
     if (firstOperator !== "-" && isOperator(firstOperator)) return
     if (isEndOperator && isOperator(newLastChar)) return
+    if (containsMultipleDecimals) return
 
     dispatch({ type: "setScreen", payload: value })
   }
 
   function handleKeyDown(e) {
-    if (e.key === "Enter") calculate()
+    if (e.key === "Enter" || e.key === "=") calculate()
     if (e.key === "Escape" || e.key === "Delete") dispatch({ type: "clear" })
-    if (e.key === ".") dispatch({ type: "setScreen", payload: "0." })
+    if (e.key === "." && screen.length === 0)
+      dispatch({ type: "setScreen", payload: "0." })
+    if (e.key === "=") e.preventDefault()
   }
 
   return (
