@@ -1,7 +1,8 @@
 import { useCalculator } from "../contexts/CalculatorContext"
 
 const ZERO = "0."
-const OPERATORS = ["+", "-", "x", "/", "%", "."]
+const PERCENTS = "%x"
+const OPERATORS = ["+", "-", "x", "/", "%", ".", PERCENTS]
 
 export function Button({ children }) {
   const { dispatch, screen } = useCalculator()
@@ -35,6 +36,9 @@ export function Button({ children }) {
     if (containsMultipleDecimals) return
 
     dispatch({ type: "setScreen", payload: newScreen })
+
+    if (children === "%" && screen.length > 0)
+      dispatch({ type: "setScreen", payload: [...screen, PERCENTS] })
   }
 
   return (

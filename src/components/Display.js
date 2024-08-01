@@ -34,6 +34,8 @@ export function Display() {
     if (e.key === "." && screen.length === 0)
       dispatch({ type: "setScreen", payload: "0." })
     if (e.key === "=") e.preventDefault()
+    if (e.key === "%" && screen.length > 0)
+      dispatch({ type: "setScreen", payload: screen + "%x" })
   }
 
   return (
