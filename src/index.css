@@ -59,7 +59,7 @@ body {
 }
 
 .button:hover {
-  background-color: #968989;
+  background-color: #c0c0c0;
 }
 
 .button:active {
@@ -76,7 +76,7 @@ body {
 }
 
 .button.operator:active {
-  background-color: #cc7a00;
+  background-color: #e08900;
 }
 
 .button.equal {
@@ -89,5 +89,18 @@ body {
 }
 
 .button.equal:active {
+  background-color: #28a745;
+}
+
+.button.delete-Btn {
+  background-color: #34c759;
+  color: #fff;
+}
+
+.button.delete-Btn:hover {
+  background-color: #2db94f;
+}
+
+.button.delete-Btn:active {
   background-color: #28a745;
 }

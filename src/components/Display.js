@@ -1,6 +1,8 @@
 import { useCalculator } from "../contexts/CalculatorContext"
 
 const OPERATORS = ["+", "-", "x", "/", "%", ".", "="]
+const NUMBERS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "(", ")"]
+const ALLOWED_CHARACTERS = [...NUMBERS, ...OPERATORS]
 
 export function Display() {
   const { screen, dispatch, calculate } = useCalculator()
@@ -17,11 +19,17 @@ export function Display() {
     const newLastChar = value[value.length - 1]
     const firstOperator = value[0]
 
+    // console.log("First Operator:", firstOperator)
+    // console.log("New Last Char:", newLastChar)
+
     const containsMultipleDecimals = value
       .split(/[+\-\x/%]/)
       .some((part) => part.split(".").length > 2)
 
-    if (firstOperator !== "-" && isOperator(firstOperator)) return
+    if (!value.split("").every((char) => ALLOWED_CHARACTERS.includes(char)))
+      return
+    if (firstOperator !== "-" && isOperator(firstOperator) && firstOperator)
+      return
     if (isEndOperator && isOperator(newLastChar)) return
     if (containsMultipleDecimals) return
 

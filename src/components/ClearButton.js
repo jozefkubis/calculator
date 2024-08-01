@@ -8,9 +8,9 @@ export function ClearButton({ children }) {
   }
 
   return (
-    <div className="button">
+    <div>
       <button
-        className="button"
+        className="button delete-Btn"
         value={children}
         onClick={() => clear(children)}
       >
